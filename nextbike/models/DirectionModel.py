@@ -7,9 +7,9 @@ from nextbike.models.Model import Model
 from nextbike.preprocessing import Preprocessor, Transformer
 
 
-class DestinationModel(Model):
+class DirectionModel(Model):
     """
-    Class for the training/prediction of destination models inheriting from the abstract class Model.
+    Class for the training/prediction of direction models inheriting from the abstract class Model.
     """
 
     def __init__(self):
@@ -72,20 +72,20 @@ class DestinationModel(Model):
         :return:
         """
         # Initialize the model with given parameters
-        destination_model = RandomForestClassifier(n_jobs=n_jobs, random_state=random_state)
+        direction_model = RandomForestClassifier(n_jobs=n_jobs, random_state=random_state)
         print('RandomForestClassifier model is initialized with n_jobs: {} and random_state: {}'.format(n_jobs,
                                                                                                         random_state))
         # Initiating the training process
-        print('Conducting training on {} rows for destination classification.'.format(len(self.target)))
-        destination_model.fit(self.features, self.target.ravel())
+        print('Conducting training on {} rows for direction classification.'.format(len(self.target)))
+        direction_model.fit(self.features, self.target.ravel())
         print('Training was successful.')
 
         # Assigning the trained model to the respective class attribute
-        self.model = destination_model
+        self.model = direction_model
 
         # Save the trained model to disc
         print('Saving the duration model to disc.')
-        io.save_model(destination_model, type='classifier')
+        io.save_model(direction_model, type='classifier')
 
         print('Training process is complete.')
 
@@ -100,10 +100,10 @@ class DestinationModel(Model):
         # Try to load duration prediction model if class instance was not used for training
         try:
             if self.model is None:
-                print('This DestinationModel instance does not have a model loaded. Loading model from "data/output".')
+                print('This DirectionModel instance does not have a model loaded. Loading model from "data/output".')
                 self.model = io.read_model(type='classifier')
         except FileNotFoundError:
-            raise FileNotFoundError('No destination model trained yet. Please train a model first.')
+            raise FileNotFoundError('No direction model trained yet. Please train a model first.')
 
         # Predict new data if class instance was not used for training
         if path is not None:
@@ -126,7 +126,7 @@ class DestinationModel(Model):
 
         # Create a DataFrame containing predictions and the transformed data
         self.predicted_data = self.raw_data.copy()
-        self.predicted_data['destination'] = self.encoder.inverse_transform(self.predictions)
+        self.predicted_data['direction'] = self.encoder.inverse_transform(self.predictions)
 
         # Saving the predictions to disk
         if save:
