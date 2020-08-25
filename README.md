@@ -1,10 +1,11 @@
 # Programming Data Science – Semester Project
- Within the same folder as ```setup.py``` run ```pip3 install .``` to install the package. Use flag ```-e``` to install in development mode. Import via ```import nextbike```. 
+The aim of this semester project was the development of a easy-to-use python package. The focus did not lie on the utilization of the perfect machine learning method but rather to enable users of the package to extend and use the packages functionality without effort and to produce clean, readable and mantainable code. This can also be seen as an exercise for open source contributions and development and included the reasonable use of git, GitHub and other collaboration tools.
 
-# Project Report
-Please access the project report via the root directory of this repository or via this link: [Report.pdf](Report.pdf)
 
 # Quick Start
+
+# Installation 
+Within the same folder as ```setup.py``` run ```pip3 install .``` to install the package. Use flag ```-e``` to install in development mode. Import via ```import nextbike```. 
 
 ## Table of Contents
 * [Preprocessing API](#preprocessing-api)
