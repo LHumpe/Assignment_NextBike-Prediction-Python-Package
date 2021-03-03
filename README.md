@@ -7,6 +7,7 @@ The aim of this semester project was the development of a easy-to-use python pac
 # Installation 
 Within the same folder as ```setup.py``` run ```pip3 install .``` to install the package. Use flag ```-e``` to install in development mode. Import via ```import nextbike```. 
 
+Example data can be found [HERE](data/input/mannheim.csv).
 ## Table of Contents
 * [Preprocessing API](#preprocessing-api)
 * [Prediction API](#prediction-api)

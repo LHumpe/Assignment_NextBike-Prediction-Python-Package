@@ -130,7 +130,6 @@ dmypy.json
 .atom
 
 # Data files
-*.csv
 *.pkl
 
 # Python Scripts
